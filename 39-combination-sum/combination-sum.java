@@ -19,9 +19,10 @@ class Solution {
         if (sum > target || i == candidates.length) return;
         
         // keep
+        if (sum + candidates[i] <= target){
         result.add(candidates[i]);
         helper(candidates, list, result, target, sum + candidates[i], i);
-        result.remove(result.size() - 1);
+        result.remove(result.size() - 1);}
 
         // dont keep
         helper(candidates, list, result, target, sum, i + 1);
