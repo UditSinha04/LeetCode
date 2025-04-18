@@ -17,18 +17,18 @@ class Solution {
 
         ListNode dummy = new ListNode(0);
         dummy.next = head;
-        ListNode prev = dummy;
+        ListNode tail = dummy;
 
         while(head != null && head.next != null){
-            ListNode first = head;
-            ListNode second = head.next;
+            ListNode curr = head;
+            ListNode next = head.next;
 
-            prev.next = second;
-            first.next = second.next;
-            second.next = first;
+            tail.next = next;
+            curr.next = next.next;
+            next.next = curr;
 
-            prev = first;
-            head = first.next;
+            tail = curr;
+            head = curr.next;
         }
 
         return dummy.next;
