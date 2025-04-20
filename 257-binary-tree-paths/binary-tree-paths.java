@@ -14,26 +14,26 @@
  * }
  */
 
-class Solution {
+public class Solution {
     public List<String> binaryTreePaths(TreeNode root) {
-        List<String> res = new ArrayList<>();
-        if (root == null) return res;
-        dfs(root, "", res);
-        return res;
+        List<String> paths = new ArrayList<>();
+        if (root != null) {
+            dfs(root, "", paths); 
+        }
+        return paths;
     }
 
-    private void dfs(TreeNode root, String path, List<String> res) {
-        if (root == null) return;
+    private void dfs(TreeNode node, String path, List<String> paths) {
+        if (node == null) return;
 
-        path += root.val; 
+        path += Integer.toString(node.val);
 
-        if (root.left == null && root.right == null) {
-            res.add(path); 
-            return;
+        if (node.left == null && node.right == null) {
+            paths.add(path);
+        } else {
+            path += "->";
+            dfs(node.left, path, paths);
+            dfs(node.right, path, paths);
         }
-
-        path += "->";
-        dfs(root.left, path, res);
-        dfs(root.right, path, res);
     }
 }
