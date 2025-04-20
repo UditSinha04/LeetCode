@@ -23,17 +23,17 @@ public class Solution {
         return paths;
     }
 
-    private void dfs(TreeNode node, String path, List<String> paths) {
-        if (node == null) return;
+    private void dfs(TreeNode root, String path, List<String> paths) {
+        if (root == null) return;
 
-        path += Integer.toString(node.val);
+        path += Integer.toString(root.val);
 
-        if (node.left == null && node.right == null) {
+        if (root.left == null && root.right == null) {
             paths.add(path);
         } else {
             path += "->";
-            dfs(node.left, path, paths);
-            dfs(node.right, path, paths);
+            dfs(root.left, path, paths);
+            dfs(root.right, path, paths);
         }
     }
 }
