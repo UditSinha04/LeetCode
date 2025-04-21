@@ -3,7 +3,7 @@ class Solution {
         int n=s.length();
         int ans=0;
         int arr[]={-1,-1,-1};
-        // int min=Integer.MAX_VALUE;
+    
         for(int i=0;i<n;i++)
         {
             
