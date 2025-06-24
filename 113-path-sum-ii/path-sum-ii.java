@@ -14,24 +14,26 @@
  * }
  */
 class Solution {
+    static List<List<Integer>> result = new ArrayList();
+    static int [] arr= new int[1000];
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
-        List<List<Integer>> result = new ArrayList<>();
-        dfs(root, targetSum, new ArrayList<>(), result);
+        result.clear();
+        pathsumhelper( root, 0, targetSum);
         return result;
     }
-
-    private void dfs(TreeNode node, int remaining, List<Integer> path, List<List<Integer>> result) {
-        if (node == null) return;
-
-        path.add(node.val);
-
-        if (node.left == null && node.right == null && remaining == node.val) {
-            result.add(new ArrayList<>(path));
-        } else {
-            dfs(node.left, remaining - node.val, path, result);
-            dfs(node.right, remaining - node.val, path, result);
+    static void pathsumhelper(TreeNode root, int  i , int sum){
+        if(root==null) return ;
+        arr[i]=root.val;
+        if(root.left==null && root.right==null){
+            int sum2 =0;
+            for(int j=0; j<=i; j++) sum2= sum2+arr[j];
+            List<Integer> list = new ArrayList();
+            if(sum2==sum){
+                for(int j=0; j<=i;j++) list.add(arr[j]);
+                result.add(list);  
+            }
         }
-
-        path.remove(path.size() - 1); 
+        pathsumhelper(root.left,i+1,sum);
+        pathsumhelper(root.right,i+1,sum);
     }
 }
