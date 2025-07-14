@@ -4,7 +4,7 @@ class Solution {
         String rev = new StringBuilder(cleaned).reverse().toString();
 
         if(rev.equalsIgnoreCase(cleaned)) return true;
-        
+
         return false;
     }
 }
