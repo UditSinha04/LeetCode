@@ -8,6 +8,7 @@ class Solution {
         }
 
         int S = n*(n+1)/2;
+        System.gc();
         return S-sum;
         
     }
